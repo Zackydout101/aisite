@@ -1,21 +1,21 @@
 const axios = require('axios');
-const fs = require('fs');
 const FormData = require('form-data');
+const { Readable } = require('stream'); // Import Readable from the 'stream' module
 
 // URL of your Azure Function (global scope)
 const functionUrl = 'https://tico101.azurewebsites.net/api/backend';
 
-async function uploadImage(image) {
-  // Path to the image file you want to upload
-  const imagePath = image;
-
+async function uploadImage(imageBuffer, blobname) {
   // Create a new FormData object
   const formData = new FormData();
   formData.append('additional_data', 'value'); // Add any additional data
 
+  // Create a Readable stream from the image buffer
+  const imageStream = Readable.from(imageBuffer);
+
   // Append the image file to the FormData object
-  formData.append('file', fs.createReadStream(imagePath), {
-    filename: 'iphone.jpg', // Set the filename
+  formData.append('file', imageStream, {
+    filename: blobname, // Set the filename
     contentType: 'image/jpeg', // Set the content type
   });
 
@@ -30,11 +30,14 @@ async function uploadImage(image) {
 
     if (response.status === 200) {
       console.log('Image uploaded successfully.');
+      return response.headers.etag; // Return the ETag from the response if needed
     } else {
       console.log('Image upload failed.');
+      return null; // Return null or handle the error as needed
     }
   } catch (error) {
     console.error('Error:', error.message);
+    throw error; // Rethrow the error to handle it in the calling code
   }
 }
 

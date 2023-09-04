@@ -3,7 +3,7 @@ const fs = require('fs');
 const FormData = require('form-data');
 
 // URL of your Azure Function (global scope)
-const functionUrl = 'https://tico101.azurewebsites.net/api/backend';
+const functionUrl = "https://testingnoww.blob.core.windows.net";
 
 async function uploadImage(image) {
   // Path to the image file you want to upload

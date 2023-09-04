@@ -6,11 +6,71 @@
     padding: 10px 20px;
     font-size: 16px;
 }
-
+pre {
+    font-family: "Tahoma", sans-serif;
+}
 body {
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* This sets the height to the viewport height for full-page centering */
+}
+.uploaded-image{
+    width: 22em;
+    height: 22em;
+}
+h1 {
+    font-family: "Tahoma", sans-serif;
+    /* Replace "Your Desired Font" with the actual font you want to use */
+}
+p {
+    font-family: "Tahoma", sans-serif;
+    /* Replace "Your Desired Font" with the actual font you want to use */
+}
+
+/* CSS for the upload button */
+.upload-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background-color: #007bff;
+    /* Change the background color to your preference */
+    color: #fff;
+    /* Change the text color to your preference */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style the input file element (hidden) */
+.upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 20%;
+    height: 20%;
+    cursor: pointer;
+}
+
+/* Style the label text */
+.upload-label {
+    display: block;
+    text-align: center;
+}
+
+/* Optional: Hover effect */
+.upload-button:hover {
+    background-color: #0056b3;
+    /* Change the hover background color to your preference */
 }
